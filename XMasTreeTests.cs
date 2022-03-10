@@ -41,12 +41,13 @@ public class XMasTreeTests
         Assert.AreEqual(1, top.Count(x => x == '#'));
     }
 
-    [Test]
-    public void Positive_height_always_creates_a_tree_with_a_single_top_in_the_middle()
+    [TestCase(1,0)]
+    [TestCase(2,1)]
+    public void Treetop_is_always_in_the_middle(int height, int middle)
     {
-        var tree = XMasTree(2);
+        var tree = XMasTree(height);
         var top = tree.First();
-        Assert.AreEqual(1, top.IndexOf('#'));
+        Assert.AreEqual(middle, top.IndexOf('#'));
     }
 
     [Test]
