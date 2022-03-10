@@ -85,6 +85,7 @@ public class XMasTreeTests
         Assert.AreEqual(middle, upperTrunk.IndexOf('#'));
     }
 
+    [TestCase(1,1,"#")]
     [TestCase(2,1,"###")]
     public void Widest_part_sits_on_top_of_the_stem(int height, int index, string treePart)
     {
