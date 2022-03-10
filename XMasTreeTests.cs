@@ -29,28 +29,32 @@ public class XMasTreeTests
     public void Positive_height_always_creates_a_tree_with_a_single_top(int height)
     {
         var tree = XMasTree(height);
-        Assert.AreEqual(1, tree[0].Count(x => x == '#'));
+        var top = tree.First();
+        Assert.AreEqual(1, top.Count(x => x == '#'));
     }
 
     [Test]
     public void Positive_height_always_creates_a_tree_with_a_single_top_in_the_middle()
     {
         var tree = XMasTree(2);
-        Assert.AreEqual(1, tree[0].IndexOf('#'));
+        var top = tree.First();
+        Assert.AreEqual(1, top.IndexOf('#'));
     }
 
     [Test]
     public void Lower_trunk_is_one_unit_wide()
     {
         var tree = XMasTree(2);
-        Assert.AreEqual(1, tree.Last().Count(x => x == '#'));
+        var lowerTrunk = tree.Last();
+        Assert.AreEqual(1, lowerTrunk.Count(x => x == '#'));
     }
 
     [Test]
     public void Upper_trunk_is_one_unit_wide()
     {
         var tree = XMasTree(2);
-        Assert.AreEqual(1, tree[tree.Count-2].Count(x => x == '#'));
+        var upperTrunk = tree[tree.Count-2];
+        Assert.AreEqual(1, upperTrunk.Count(x => x == '#'));
     }
 
     [Test]
