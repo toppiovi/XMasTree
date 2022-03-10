@@ -110,11 +110,11 @@ public class XMasTreeTests
         Assert.AreEqual(padding, lowerTrunk.Count(x => x == '_'));
     }
 
-    [Test]
-    public void Upper_trunk_is_padded_to_match_the_widest_part_of_the_tree()
+    [TestCase(2,2)]
+    public void Upper_trunk_is_padded_to_match_the_widest_part_of_the_tree(int height, int padding)
     {
-        var tree = XMasTree(2);
+        var tree = XMasTree(height);
         var upperTrunk = tree[tree.Count-2];
-        Assert.AreEqual(2, upperTrunk.Count(x => x == '_'));
+        Assert.AreEqual(padding, upperTrunk.Count(x => x == '_'));
     }
 }
