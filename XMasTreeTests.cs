@@ -9,9 +9,9 @@ public class XMasTreeTests
 {
     
     [Test]
-    public void Negative_height_is_not_allowed()
+    public void Negative_height_is_not_allowed([Values(-1,-2, int.MinValue)]int negativeHeight)
     {
-        Assert.Throws<ArgumentOutOfRangeException>(() => XMasTree(-1));
+        Assert.Throws<ArgumentOutOfRangeException>(() => XMasTree(negativeHeight));
     }
 
     [Test]
