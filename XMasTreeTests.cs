@@ -52,4 +52,11 @@ public class XMasTreeTests
         var tree = XMasTree(2);
         Assert.AreEqual(1, tree[tree.Count-2].Count(x => x == '#'));
     }
+
+    [Test]
+    public void Height_2_creates_tree_which_grows_wider_towards_the_stem()
+    {
+        var tree = XMasTree(2);
+        CollectionAssert.AreEqual("###", tree[1]);
+    }
 }
