@@ -50,9 +50,9 @@ public class XMasTreeTests
     }
 
     [Test]
-    public void Lower_trunk_is_one_unit_wide()
+    public void Height_2_or_more_grows_lower_trunk_one_unit_wide([Values(2,3)]int height)
     {
-        var tree = XMasTree(2);
+        var tree = XMasTree(height);
         var lowerTrunk = tree.Last();
         Assert.AreEqual(1, lowerTrunk.Count(x => x == '#'));
     }
