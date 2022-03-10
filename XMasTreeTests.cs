@@ -43,6 +43,6 @@ public class XMasTreeTests
     public void Lower_trunk_is_one_unit_wide()
     {
         var tree = XMasTree(2);
-        Assert.AreEqual(1, tree[3].Count(x => x == '#'));
+        Assert.AreEqual(1, tree.Last().Count(x => x == '#'));
     }
 }
