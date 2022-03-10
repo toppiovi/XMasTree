@@ -74,10 +74,11 @@ public class XMasTreeTests
     }
 
     [Test]
-    public void Height_2_creates_tree_which_grows_wider_towards_the_stem()
+    public void Height_2_creates_tree_whose_widest_part_sits_on_top_of_the_stem()
     {
         var tree = XMasTree(2);
-        CollectionAssert.AreEqual("###", tree[1]);
+        var widestPart = tree[tree.Count-3];
+        CollectionAssert.AreEqual("###", widestPart);
     }
 
     [Test]
