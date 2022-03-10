@@ -17,9 +17,7 @@ public class XMas
         if (height >= 2)
         {
             GrowTrunkWithPadding(tree, height);
-
-            var widestPart = new String(Enumerable.Repeat('#', (height*2)-1).ToArray());
-            tree.Insert(0,widestPart);
+            GrowWidestPart(tree, height);
         }
         if (height == 2)
         {
@@ -38,11 +36,18 @@ public class XMas
     {
         for (int i = 0; i < 2; i++)
         {
-            for(int padding = 0; padding < height-1; padding++)
-            {
-                tree[i] += '_';
-                tree[i] = '_' + tree[i];
-            }
+            var padding = StringFrom('_', height-1);
+            tree[i] = padding + tree[i] + padding;
         }
+    }
+
+    private static void GrowWidestPart(List<string> tree, int height)
+    {
+        var widestPart = StringFrom('#', (height*2)-1);
+        tree.Insert(0,widestPart);
+    }
+
+    private static string StringFrom(char value, int n) {
+        return new String(Enumerable.Repeat(value, n).ToArray());
     }
 }
