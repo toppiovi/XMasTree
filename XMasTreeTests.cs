@@ -71,4 +71,12 @@ public class XMasTreeTests
         var top = tree.First();
         Assert.AreEqual(2, top.Count(x => x == '_'));
     }
+
+    [Test]
+    public void Lower_trunk_is_padded_to_match_the_widest_part_of_the_tree()
+    {
+        var tree = XMasTree(2);
+        var lowerTrunk = tree.Last();
+        Assert.AreEqual(2, lowerTrunk.Count(x => x == '_'));
+    }
 }
