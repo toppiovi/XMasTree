@@ -1,17 +1,12 @@
 using NUnit.Framework;
-
+using System.Collections.Generic;
 namespace xmastree;
 
-public class Tests
+public class XMasTreeTests
 {
-    [SetUp]
-    public void Setup()
-    {
-    }
-
     [Test]
-    public void Test1()
+    public void Height_0_creates_an_empty_list()
     {
-        Assert.Pass();
+        CollectionAssert.AreEqual(new List<string>(), XMasTree(0));
     }
 }
