@@ -34,7 +34,7 @@ public class XMasTreeTests
 
     [TestCase(1)]
     [TestCase(2)]
-    public void Positive_height_always_creates_a_tree_with_a_single_top(int height)
+    public void Treetop_is_always_one_unit_wide(int height)
     {
         var tree = XMasTree(height);
         var top = tree.First();
@@ -76,7 +76,7 @@ public class XMasTreeTests
     }
 
     [Test]
-    public void Upper_trunk_is_in_the_middle()
+    public void Height_2_or_more_grows_upper_trunk_in_the_middle()
     {
         var tree = XMasTree(2);
         var upperTrunk = tree[tree.Count-2];
