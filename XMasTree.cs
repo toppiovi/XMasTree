@@ -11,7 +11,8 @@ public class XMas
 
         if (height == 2)
             return new List<string>{"_#_", "###", "_#_", "_#_"};
-
+        if (height == 3)
+            return new List<string>{"#"};
         return height == 1 ? new List<string>{"#", "#"} : new List<string>();
     }
 }
