@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 namespace xmastree;
 
 public class XMas 
@@ -13,6 +14,9 @@ public class XMas
         if (height == 2)
             return new List<string>{"_#_", "###", "_#_", "_#_"};
         
-        return new List<string>(){"#", "#"};
+        var tree = new List<string>(){"#", "#"};
+        if (height == 3)
+            tree.Add("  #  ");
+        return tree;
     }
 }
