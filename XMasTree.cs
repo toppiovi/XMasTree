@@ -6,7 +6,7 @@ public class XMas
 {
     public static List<string> XMasTree(int height)
     {
-        if (height == -1)
+        if (height < 0)
             throw new ArgumentOutOfRangeException();
 
         if (height == 2)
