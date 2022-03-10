@@ -13,7 +13,6 @@ public class XMas
         if (height == 2)
             return new List<string>{"_#_", "###", "_#_", "_#_"};
         
-        var tree = new List<string>(){"#", "#"};
-        return tree;
+        return new List<string>(){"#", "#"};
     }
 }
