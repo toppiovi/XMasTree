@@ -16,7 +16,7 @@ public class XMas
         
         var tree = new List<string>(){"#", "#"};
         if (height == 3)
-            tree.Add("  #  ");
+            tree.Add("__#__");
         return tree;
     }
 }
