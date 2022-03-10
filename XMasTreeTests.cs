@@ -102,6 +102,7 @@ public class XMasTreeTests
 
     [TestCase(1,0)]
     [TestCase(2,2)]
+    [TestCase(3,4)]
     public void Lower_trunk_is_padded_to_match_the_widest_part_of_the_tree(int height, int padding)
     {
         var tree = XMasTree(height);
