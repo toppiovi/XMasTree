@@ -27,12 +27,14 @@ public class XMas
         }
         if (height == 2)
         {
-            tree.Insert(0,"###");
+            var widestPart = new String(Enumerable.Repeat('#', 3).ToArray());
+            tree.Insert(0,widestPart);
             tree.Insert(0,"_#_");
         }
         if (height == 3)
         {
-            tree.Insert(0,"#####");
+            var widestPart = new String(Enumerable.Repeat('#', 5).ToArray());
+            tree.Insert(0,widestPart);
             tree.Insert(0,"_###_");
             tree.Insert(0,"__#__");
         }
