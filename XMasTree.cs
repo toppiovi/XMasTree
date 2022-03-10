@@ -18,6 +18,7 @@ public class XMas
         if (height == 3)
         {
             tree[0] = "__#__"; 
+            tree[1] = "#####"; 
             tree.Add("__#__");
             tree.Add("__#__");
         }
