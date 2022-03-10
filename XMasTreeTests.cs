@@ -50,19 +50,20 @@ public class XMasTreeTests
     }
 
     [Test]
-    public void Height_2_or_more_grows_lower_trunk_one_unit_wide([Values(2,3)]int height)
+    public void Lower_trunk_is_one_unit_wide([Values(1,2,3)]int height)
     {
         var tree = XMasTree(height);
         var lowerTrunk = tree.Last();
         Assert.AreEqual(1, lowerTrunk.Count(x => x == '#'));
     }
 
-    [Test]
-    public void Lower_trunk_is_in_the_middle()
+    [TestCase(1,0)]
+    [TestCase(2,1)]
+    public void Lower_trunk_is_in_the_middle(int height, int middle)
     {
-        var tree = XMasTree(2);
+        var tree = XMasTree(height);
         var lowerTrunk = tree.Last();
-        Assert.AreEqual(1, lowerTrunk.IndexOf('#'));
+        Assert.AreEqual(middle, lowerTrunk.IndexOf('#'));
     }
 
     [Test]
