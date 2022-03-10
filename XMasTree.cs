@@ -19,6 +19,7 @@ public class XMas
         {
             tree[0] = "__#__"; 
             tree[1] = "#####"; 
+            tree.Add("#####");
             tree.Add("__#__");
             tree.Add("__#__");
         }
