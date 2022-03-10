@@ -16,4 +16,10 @@ public class XMasTreeTests
     {
         CollectionAssert.AreEqual(new List<string>{"#", "#"}, XMasTree(1));
     }
+
+    [Test]
+    public void Height_2_creates_a_tree_which_has_a_total_height_of_4()
+    {
+        Assert.AreEqual(4, XMasTree(2).Count);
+    }
 }
