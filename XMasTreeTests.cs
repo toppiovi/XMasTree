@@ -24,10 +24,11 @@ public class XMasTreeTests
         Assert.AreEqual(4, XMasTree(2).Count);
     }
 
-    [Test]
-    public void Positive_height_always_creates_a_tree_with_a_single_top()
+    [TestCase(1)]
+    [TestCase(2)]
+    public void Positive_height_always_creates_a_tree_with_a_single_top(int height)
     {
-        var tree = XMasTree(2);
+        var tree = XMasTree(height);
         Assert.AreEqual(1, tree[0].Count(x => x == '#'));
     }
 }
