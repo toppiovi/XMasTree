@@ -87,7 +87,7 @@ public class XMasTreeTests
 
     [TestCase(1,1,"#")]
     [TestCase(2,1,"###")]
-    [TestCase(3,1,"#####")]
+    [TestCase(3,2,"#####")]
     public void Widest_part_sits_on_top_of_the_stem(int height, int index, string treePart)
     {
         var tree = XMasTree(height);
