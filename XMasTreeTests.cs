@@ -60,6 +60,7 @@ public class XMasTreeTests
 
     [TestCase(1,0)]
     [TestCase(2,1)]
+    [TestCase(3,2)]
     public void Lower_trunk_is_in_the_middle(int height, int middle)
     {
         var tree = XMasTree(height);
