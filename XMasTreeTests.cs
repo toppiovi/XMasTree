@@ -77,6 +77,7 @@ public class XMasTreeTests
     }
 
     [TestCase(2,1)]
+    [TestCase(3,2)]
     public void Height_2_or_more_grows_upper_trunk_in_the_middle(int height, int middle)
     {
         var tree = XMasTree(height);
