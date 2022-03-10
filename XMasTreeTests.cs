@@ -76,12 +76,12 @@ public class XMasTreeTests
         Assert.AreEqual(1, upperTrunk.Count(x => x == '#'));
     }
 
-    [Test]
-    public void Height_2_or_more_grows_upper_trunk_in_the_middle()
+    [TestCase(2,1)]
+    public void Height_2_or_more_grows_upper_trunk_in_the_middle(int height, int middle)
     {
-        var tree = XMasTree(2);
+        var tree = XMasTree(height);
         var upperTrunk = tree[tree.Count-2];
-        Assert.AreEqual(1, upperTrunk.IndexOf('#'));
+        Assert.AreEqual(middle, upperTrunk.IndexOf('#'));
     }
 
     [Test]
