@@ -59,4 +59,12 @@ public class XMasTreeTests
         var tree = XMasTree(2);
         CollectionAssert.AreEqual("###", tree[1]);
     }
+
+    [Test]
+    public void Treetop_is_padded_to_match_the_widest_part_of_the_tree()
+    {
+        var tree = XMasTree(2);
+        var top = tree.First();
+        Assert.AreEqual(2, top.Count(x => x == '_'));
+    }
 }
