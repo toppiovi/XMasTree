@@ -24,17 +24,17 @@ public class XMas
                     tree[i] = '_' + tree[i];
                 }
             }
+            
+            var widestPart = new String(Enumerable.Repeat('#', (height*2)-1).ToArray());
+            tree.Insert(0,widestPart);
         }
         if (height == 2)
         {
-            var widestPart = new String(Enumerable.Repeat('#', 3).ToArray());
-            tree.Insert(0,widestPart);
+
             tree.Insert(0,"_#_");
         }
         if (height == 3)
         {
-            var widestPart = new String(Enumerable.Repeat('#', 5).ToArray());
-            tree.Insert(0,widestPart);
             tree.Insert(0,"_###_");
             tree.Insert(0,"__#__");
         }
