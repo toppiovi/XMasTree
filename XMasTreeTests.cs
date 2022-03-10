@@ -95,6 +95,14 @@ public class XMasTreeTests
         CollectionAssert.AreEqual(treePart, widestPart);
     }
 
+    [TestCase(3,1,"_###_")]
+    public void Crown_grows_wider_towards_the_stem(int height, int index, string treePart)
+    {
+        var tree = XMasTree(height);
+        var widestPart = tree[index];
+        CollectionAssert.AreEqual(treePart, widestPart);
+    }
+
     [TestCase(1,0)]
     [TestCase(2,2)]
     [TestCase(3,4)]
