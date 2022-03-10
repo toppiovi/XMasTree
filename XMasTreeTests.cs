@@ -50,6 +50,14 @@ public class XMasTreeTests
     }
 
     [Test]
+    public void Lower_trunk_is_in_the_middle()
+    {
+        var tree = XMasTree(2);
+        var lowerTrunk = tree.Last();
+        Assert.AreEqual(1, lowerTrunk.IndexOf('#'));
+    }
+
+    [Test]
     public void Upper_trunk_is_one_unit_wide()
     {
         var tree = XMasTree(2);
