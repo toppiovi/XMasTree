@@ -85,12 +85,12 @@ public class XMasTreeTests
         Assert.AreEqual(middle, upperTrunk.IndexOf('#'));
     }
 
-    [Test]
-    public void Height_2_creates_tree_whose_widest_part_sits_on_top_of_the_stem()
+    [TestCase(2,1,"###")]
+    public void Widest_part_sits_on_top_of_the_stem(int height, int index, string treePart)
     {
-        var tree = XMasTree(2);
-        var widestPart = tree[tree.Count-3];
-        CollectionAssert.AreEqual("###", widestPart);
+        var tree = XMasTree(height);
+        var widestPart = tree[index];
+        CollectionAssert.AreEqual(treePart, widestPart);
     }
 
     [TestCase(1,0)]
