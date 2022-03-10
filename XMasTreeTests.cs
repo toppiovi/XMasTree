@@ -58,6 +58,14 @@ public class XMasTreeTests
     }
 
     [Test]
+    public void Upper_trunk_is_in_the_middle()
+    {
+        var tree = XMasTree(2);
+        var upperTrunk = tree[tree.Count-2];
+        Assert.AreEqual(1, upperTrunk.IndexOf('#'));
+    }
+
+    [Test]
     public void Height_2_creates_tree_which_grows_wider_towards_the_stem()
     {
         var tree = XMasTree(2);
