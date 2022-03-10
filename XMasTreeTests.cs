@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 namespace xmastree;
@@ -6,6 +7,13 @@ using static XMas;
 
 public class XMasTreeTests
 {
+    
+    [Test]
+    public void Negative_height_is_not_allowed()
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => XMasTree(-1));
+    }
+
     [Test]
     public void Height_0_creates_an_empty_list()
     {
