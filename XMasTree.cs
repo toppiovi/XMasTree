@@ -9,10 +9,18 @@ public class XMas
     {
         if (height < 0)
             throw new ArgumentOutOfRangeException();
-            
+
         if (height == 0)
             return new List<string>();
 
+        var tree = GrowLeaves(height);
+        AddPaddedTrunk(tree, height);
+
+        return tree;
+    }
+
+    private static List<string> GrowLeaves(int height)
+    {
         var tree = new List<string>();
         int treeWidth = 1;
         int totalPaddingWidth = (height-1)*2;
@@ -23,17 +31,19 @@ public class XMas
             treeWidth += 2;
             totalPaddingWidth -= 2;
         }
-    
-        AddPaddedTrunk(tree, height);
-        if (height > 1)
-            AddPaddedTrunk(tree, height);
 
         return tree;
     }
-
     private static void AddPaddedTrunk(List<string> tree, int height)
     {
-        tree.Add(PaddedTreePart(1, (height-1)*2));
+        tree.Add(PaddedTrunk(height));
+        if (height > 1)
+            tree.Add(PaddedTrunk(height));
+    }
+
+    private static string PaddedTrunk(int height)
+    {
+        return PaddedTreePart(1, (height-1)*2);
     }
 
     private static string PaddedTreePart(int treeWidth, int totalPaddingWidth)
