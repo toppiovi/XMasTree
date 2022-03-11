@@ -11,18 +11,19 @@ public class XMas
             throw new ArgumentOutOfRangeException();
         if (height == 0)
             return new List<string>();
-
-        var tree = new List<string>(){"#", "#"};
         if (height == 1)
-            return tree;
+            return new List<string>{"#", "#"};
 
-        GrowTrunkWithPadding(tree, height);
-        GrowWidestPart(tree, height);
+        var tree = new List<string>();
+        tree.Add(CreatePartWithPadding(1,(height-1)*2));
 
         if (height == 3)
-            tree.Insert(0,CreatePartWithPadding(3,2));
+            tree.Add(CreatePartWithPadding(3,2));
+
+        tree.Add(CreatePartWithPadding((height*2)-1,0));
         
-        tree.Insert(0,CreatePartWithPadding(1,(height-1)*2));
+        GrowTrunkWithPadding(tree, height);
+
 
         return tree;
     }
@@ -31,15 +32,10 @@ public class XMas
     {
         for (int i = 0; i < 2; i++)
         {
-            tree[i] = CreatePartWithPadding(1, (height-1)*2);
+            tree.Add(CreatePartWithPadding(1, (height-1)*2));
         }
     }
-
-    private static void GrowWidestPart(List<string> tree, int height)
-    {
-        tree.Insert(0,CreatePartWithPadding((height*2)-1,0));
-    }
-
+    
     private static string CreatePartWithPadding(int treeWidth, int totalPaddingWidth)
     {
         var leaves = StringFrom('#', treeWidth);
