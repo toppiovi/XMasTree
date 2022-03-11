@@ -20,35 +20,42 @@ public class XMas
         
         for (int i = 0; i < height; i++)
         {
-            tree.Add(CreatePartWithPadding(treeWidth, totalPaddingWidth));
+            tree.Add(PaddedTreePart(treeWidth, totalPaddingWidth));
             treeWidth += 2;
             totalPaddingWidth -= 2;
         }
         
-        GrowTrunkWithPadding(tree, height);
+        AddPaddedTrunk(tree, height);
+        AddPaddedTrunk(tree, height);
 
         return tree;
     }
 
-    private static void GrowTrunkWithPadding(List<string> tree, int height)
+    private static void AddPaddedTrunk(List<string> tree, int height)
     {
-        for (int i = 0; i < 2; i++)
-        {
-            tree.Add(CreatePartWithPadding(1, (height-1)*2));
-        }
+        tree.Add(PaddedTreePart(1, (height-1)*2));
     }
 
-    private static string CreatePartWithPadding(int treeWidth, int totalPaddingWidth)
+    private static string PaddedTreePart(int treeWidth, int totalPaddingWidth)
     {
-        var leaves = StringFrom('#', treeWidth);
-        if (totalPaddingWidth == 0)
-            return leaves;
+        var treePart = InitStringWith('#', treeWidth);
+        if (NoPaddingRequired(totalPaddingWidth))
+            return treePart;
 
-        var padding = StringFrom('_', totalPaddingWidth/2);
-        return padding + leaves + padding;
+        return AddPadding(treePart, totalPaddingWidth);
     }
 
-    private static string StringFrom(char value, int n) {
+    private static bool NoPaddingRequired(int totalPaddingWidth)
+    {
+        return totalPaddingWidth == 0;
+    }
+    private static string AddPadding(string treePart, int totalPaddingWidth)
+    {
+        var padding = InitStringWith('_', totalPaddingWidth/2);
+        return padding + treePart + padding;
+    }
+
+    private static string InitStringWith(char value, int n) {
         return new String(Enumerable.Repeat(value, n).ToArray());
     }
 }
