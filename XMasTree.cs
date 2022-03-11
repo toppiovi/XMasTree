@@ -9,10 +9,9 @@ public class XMas
     {
         if (height < 0)
             throw new ArgumentOutOfRangeException();
+            
         if (height == 0)
             return new List<string>();
-        if (height == 1)
-            return new List<string>{"#", "#"};
 
         var tree = new List<string>();
         int treeWidth = 1;
@@ -24,9 +23,10 @@ public class XMas
             treeWidth += 2;
             totalPaddingWidth -= 2;
         }
-        
+    
         AddPaddedTrunk(tree, height);
-        AddPaddedTrunk(tree, height);
+        if (height > 1)
+            AddPaddedTrunk(tree, height);
 
         return tree;
     }
