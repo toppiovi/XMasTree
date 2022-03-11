@@ -16,12 +16,9 @@ public class XMas
         if (height == 1)
             return tree;
 
-        if (height >= 2)
-        {
-            GrowTrunkWithPadding(tree, height);
-            GrowWidestPart(tree, height);
-        }
-        
+        GrowTrunkWithPadding(tree, height);
+        GrowWidestPart(tree, height);
+
         if (height == 3)
             tree.Insert(0,CreatePartWithPadding(3,2));
         
