@@ -13,8 +13,8 @@ public class XMas
         if (height == 0)
             return new List<string>();
 
-        var tree = GrowLeaves(height);
-        AddPaddedTrunk(tree, height);
+        var leaves = GrowLeaves(height);
+        var tree = GrowTrunk(leaves, height);
 
         return tree;
     }
@@ -34,11 +34,12 @@ public class XMas
 
         return tree;
     }
-    private static void AddPaddedTrunk(List<string> tree, int height)
+    private static List<string> GrowTrunk(List<string> leaves, int height)
     {
-        tree.Add(PaddedTrunk(height));
+        leaves.Add(PaddedTrunk(height));
         if (height > 1)
-            tree.Add(PaddedTrunk(height));
+            leaves.Add(PaddedTrunk(height));
+        return leaves;
     }
 
     private static string PaddedTrunk(int height)
