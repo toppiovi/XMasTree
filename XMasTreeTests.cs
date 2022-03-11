@@ -7,6 +7,21 @@ using static XMas;
 
 public class XMasTreeTests
 {
+    [Test]
+    public void Height_5_grows_following_tree()
+    {
+        var tree = new List<string>{
+            "____#____", 
+            "___###___", 
+            "__#####__", 
+            "_#######_", 
+            "#########", 
+            "____#____", 
+            "____#____"
+            };
+            
+        CollectionAssert.AreEqual(tree, XMasTree(5));
+    }
     
     [Test]
     public void Negative_height_is_not_allowed([Values(-1,-2, int.MinValue)]int negativeHeight)
