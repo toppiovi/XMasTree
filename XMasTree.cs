@@ -13,21 +13,19 @@ public class XMas
             return new List<string>();
 
         var tree = new List<string>(){"#", "#"};
+        if (height == 1)
+            return tree;
 
         if (height >= 2)
         {
             GrowTrunkWithPadding(tree, height);
             GrowWidestPart(tree, height);
         }
-        if (height == 2)
-        {
-            tree.Insert(0,CreatePartWithPadding(1,2));
-        }
+        
         if (height == 3)
-        {
             tree.Insert(0,CreatePartWithPadding(3,2));
-            tree.Insert(0,CreatePartWithPadding(1,4));
-        }
+        
+        tree.Insert(0,CreatePartWithPadding(1,(height-1)*2));
 
         return tree;
     }
@@ -36,21 +34,22 @@ public class XMas
     {
         for (int i = 0; i < 2; i++)
         {
-            var padding = StringFrom('_', height-1);
-            tree[i] = padding + tree[i] + padding;
+            tree[i] = CreatePartWithPadding(1, (height-1)*2);
         }
     }
 
     private static void GrowWidestPart(List<string> tree, int height)
     {
-        var widestPart = StringFrom('#', (height*2)-1);
-        tree.Insert(0, widestPart);
+        tree.Insert(0,CreatePartWithPadding((height*2)-1,0));
     }
 
     private static string CreatePartWithPadding(int treeWidth, int totalPaddingWidth)
     {
-        var padding = StringFrom('_', totalPaddingWidth/2);
         var leaves = StringFrom('#', treeWidth);
+        if (totalPaddingWidth == 0)
+            return leaves;
+
+        var padding = StringFrom('_', totalPaddingWidth/2);
         return padding + leaves + padding;
     }
 
