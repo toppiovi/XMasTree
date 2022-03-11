@@ -15,15 +15,17 @@ public class XMas
             return new List<string>{"#", "#"};
 
         var tree = new List<string>();
-        tree.Add(CreatePartWithPadding(1,(height-1)*2));
-
-        if (height == 3)
-            tree.Add(CreatePartWithPadding(3,2));
-
-        tree.Add(CreatePartWithPadding((height*2)-1,0));
+        int treeWidth = 1;
+        int totalPaddingWidth = (height-1)*2;
+        
+        for (int i = 0; i < height; i++)
+        {
+            tree.Add(CreatePartWithPadding(treeWidth, totalPaddingWidth));
+            treeWidth += 2;
+            totalPaddingWidth -= 2;
+        }
         
         GrowTrunkWithPadding(tree, height);
-
 
         return tree;
     }
@@ -35,7 +37,7 @@ public class XMas
             tree.Add(CreatePartWithPadding(1, (height-1)*2));
         }
     }
-    
+
     private static string CreatePartWithPadding(int treeWidth, int totalPaddingWidth)
     {
         var leaves = StringFrom('#', treeWidth);
