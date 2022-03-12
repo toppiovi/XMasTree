@@ -36,18 +36,6 @@ public class XMasTreeTests
             
         CollectionAssert.AreEqual(tree, XMasTree(3));
     }
-    
-    [Test]
-    public void Negative_height_is_not_allowed([Values(-1,-2, int.MinValue)]int negativeHeight)
-    {
-        Assert.Throws<ArgumentOutOfRangeException>(() => XMasTree(negativeHeight));
-    }
-
-    [Test]
-    public void Height_0_creates_an_empty_list()
-    {
-        CollectionAssert.AreEqual(new List<string>(), XMasTree(0));
-    }
 
     [Test]
     public void Height_1_creates_a_tree_with_trunk_and_treetop()
@@ -59,6 +47,30 @@ public class XMasTreeTests
         CollectionAssert.AreEqual(tree, XMasTree(1));
     }
 
+    [Test]
+    public void Height_0_creates_an_empty_list()
+    {
+        CollectionAssert.AreEqual(new List<string>(), XMasTree(0));
+    }
+    
+    [Test]
+    public void Negative_height_is_not_allowed([Values(-1,-2, int.MinValue)]int negativeHeight)
+    {
+        Assert.Throws<ArgumentOutOfRangeException>(() => XMasTree(negativeHeight));
+    }
+
+    [TestCase(3,1,"_###_")]
+    [TestCase(4,1,"__###__")]
+    [TestCase(4,2,"_#####_")]
+    [TestCase(5,2,"__#####__")]
+    [TestCase(5,3,"_#######_")]
+    public void Crown_grows_wider_towards_the_stem(int height, int index, string treePart)
+    {
+        var tree = XMasTree(height);
+        var widestPart = tree[index];
+        CollectionAssert.AreEqual(treePart, widestPart);
+    }
+    
     [Test]
     public void Height_2_creates_a_tree_which_has_a_total_height_of_4()
     {
@@ -180,17 +192,5 @@ public class XMasTreeTests
             var widestPart = tree[index];
             Assert.IsTrue(widestPart.All(x => x is'#'));
         }
-    }
-
-    [TestCase(3,1,"_###_")]
-    [TestCase(4,1,"__###__")]
-    [TestCase(4,2,"_#####_")]
-    [TestCase(5,2,"__#####__")]
-    [TestCase(5,3,"_#######_")]
-    public void Crown_grows_wider_towards_the_stem(int height, int index, string treePart)
-    {
-        var tree = XMasTree(height);
-        var widestPart = tree[index];
-        CollectionAssert.AreEqual(treePart, widestPart);
     }
 }
