@@ -50,9 +50,13 @@ public class XMasTreeTests
     }
 
     [Test]
-    public void Height_1_creates_a_tree_with_a_trunk_of_height_1_and_a_crown_of_height_1()
+    public void Height_1_creates_a_tree_with_trunk_and_treetop()
     {
-        CollectionAssert.AreEqual(new List<string>{"#", "#"}, XMasTree(1));
+        var tree = new List<string>{
+            "#", 
+            "#"
+            };
+        CollectionAssert.AreEqual(tree, XMasTree(1));
     }
 
     [Test]
@@ -177,13 +181,16 @@ public class XMasTreeTests
             Assert.IsTrue(widestPart.All(x => x is'#'));
         }
     }
-    
+
     [TestCase(3,1,"_###_")]
+    [TestCase(4,1,"__###__")]
+    [TestCase(4,2,"_#####_")]
+    [TestCase(5,2,"__#####__")]
+    [TestCase(5,3,"_#######_")]
     public void Crown_grows_wider_towards_the_stem(int height, int index, string treePart)
     {
         var tree = XMasTree(height);
         var widestPart = tree[index];
         CollectionAssert.AreEqual(treePart, widestPart);
     }
-
 }
