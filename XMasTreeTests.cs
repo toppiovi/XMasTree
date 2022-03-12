@@ -92,23 +92,37 @@ public class XMasTreeTests
         }
     }
 
-    [Test]
-    public void Lower_trunk_is_one_unit_wide([Values(1,2,3)]int height)
+    public class Lower_trunk
     {
-        var tree = XMasTree(height);
-        var lowerTrunk = tree.Last();
-        Assert.AreEqual(1, lowerTrunk.Count(x => x is '#'));
+        [Test]
+        public void Is_always_one_unit_wide([Values(1,2,3)]int height)
+        {
+            var tree = XMasTree(height);
+            var lowerTrunk = tree.Last();
+            Assert.AreEqual(1, lowerTrunk.Count(x => x is '#'));
+        }
+
+        [TestCase(1,0)]
+        [TestCase(2,1)]
+        [TestCase(3,2)]
+        public void Is_always_in_the_middle(int height, int middle)
+        {
+            var tree = XMasTree(height);
+            var lowerTrunk = tree.Last();
+            Assert.AreEqual(middle, lowerTrunk.IndexOf('#'));
+        }
+
+        [TestCase(1,0)]
+        [TestCase(2,2)]
+        [TestCase(3,4)]
+        public void Is_padded_to_match_the_widest_part_of_the_tree(int height, int padding)
+        {
+            var tree = XMasTree(height);
+            var lowerTrunk = tree.Last();
+            Assert.AreEqual(padding, lowerTrunk.Count(x => x is '_'));
+        }
     }
 
-    [TestCase(1,0)]
-    [TestCase(2,1)]
-    [TestCase(3,2)]
-    public void Lower_trunk_is_in_the_middle(int height, int middle)
-    {
-        var tree = XMasTree(height);
-        var lowerTrunk = tree.Last();
-        Assert.AreEqual(middle, lowerTrunk.IndexOf('#'));
-    }
 
     [Test]
     public void Height_2_or_more_grows_upper_trunk_one_unit_wide([Values(2,3)]int height)
@@ -155,16 +169,6 @@ public class XMasTreeTests
         var tree = XMasTree(height);
         var widestPart = tree[index];
         CollectionAssert.AreEqual(treePart, widestPart);
-    }
-
-    [TestCase(1,0)]
-    [TestCase(2,2)]
-    [TestCase(3,4)]
-    public void Lower_trunk_is_padded_to_match_the_widest_part_of_the_tree(int height, int padding)
-    {
-        var tree = XMasTree(height);
-        var lowerTrunk = tree.Last();
-        Assert.AreEqual(padding, lowerTrunk.Count(x => x is '_'));
     }
 
     [TestCase(2,2)]
