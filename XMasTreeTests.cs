@@ -19,8 +19,22 @@ public class XMasTreeTests
             "____#____", 
             "____#____"
             };
-            
+
         CollectionAssert.AreEqual(tree, XMasTree(5));
+    }
+    
+    [Test]
+    public void Height_3_grows_following_tree()
+    {
+        var tree = new List<string>{
+            "__#__", 
+            "_###_", 
+            "#####", 
+            "__#__", 
+            "__#__"
+            };
+            
+        CollectionAssert.AreEqual(tree, XMasTree(3));
     }
     
     [Test]
