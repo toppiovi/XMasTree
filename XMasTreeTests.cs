@@ -124,6 +124,18 @@ public class XMasTreeTests
         CollectionAssert.AreEqual(treePart, widestPart);
     }
 
+    [TestCase(1,0)]
+    [TestCase(2,1)]
+    [TestCase(3,2)]
+    [TestCase(4,3)]
+    [TestCase(5,4)]
+    public void Widest_part_has_no_padding(int height, int index)
+    {
+        var tree = XMasTree(height);
+        var widestPart = tree[index];
+        Assert.IsTrue(widestPart.All(x => x =='#'));
+    }
+
     [TestCase(3,1,"_###_")]
     public void Crown_grows_wider_towards_the_stem(int height, int index, string treePart)
     {
