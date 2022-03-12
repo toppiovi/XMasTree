@@ -61,22 +61,35 @@ public class XMasTreeTests
         Assert.AreEqual(4, XMasTree(2).Count);
     }
 
-    [TestCase(1)]
-    [TestCase(2)]
-    public void Treetop_is_always_one_unit_wide(int height)
+    public class Treetop 
     {
-        var tree = XMasTree(height);
-        var top = tree.First();
-        Assert.AreEqual(1, top.Count(x => x == '#'));
-    }
+        [Test]
+        public void Is_always_one_unit_wide([Values(1,2,3,5)]int height)
+        {
+            var tree = XMasTree(height);
+            var top = tree.First();
+            Assert.AreEqual(1, top.Count(x => x is '#'));
+        }
 
-    [TestCase(1,0)]
-    [TestCase(2,1)]
-    public void Treetop_is_always_in_the_middle(int height, int middle)
-    {
-        var tree = XMasTree(height);
-        var top = tree.First();
-        Assert.AreEqual(middle, top.IndexOf('#'));
+        [TestCase(1,0)]
+        [TestCase(2,1)]
+        [TestCase(3,2)]
+        public void Is_always_in_the_middle(int height, int middle)
+        {
+            var tree = XMasTree(height);
+            var top = tree.First();
+            Assert.AreEqual(middle, top.IndexOf('#'));
+        }
+
+        [TestCase(1,0)]
+        [TestCase(2,2)]
+        [TestCase(3,4)]
+        public void Is_padded_to_match_the_widest_part_of_the_tree(int height, int padding)
+        {
+            var tree = XMasTree(height);
+            var top = tree.First();
+            Assert.AreEqual(padding, top.Count(x => x is '_'));
+        }
     }
 
     [Test]
@@ -84,7 +97,7 @@ public class XMasTreeTests
     {
         var tree = XMasTree(height);
         var lowerTrunk = tree.Last();
-        Assert.AreEqual(1, lowerTrunk.Count(x => x == '#'));
+        Assert.AreEqual(1, lowerTrunk.Count(x => x is '#'));
     }
 
     [TestCase(1,0)]
@@ -102,7 +115,7 @@ public class XMasTreeTests
     {
         var tree = XMasTree(height);
         var upperTrunk = tree[tree.Count-2];
-        Assert.AreEqual(1, upperTrunk.Count(x => x == '#'));
+        Assert.AreEqual(1, upperTrunk.Count(x => x is '#'));
     }
 
     [TestCase(2,1)]
@@ -133,7 +146,7 @@ public class XMasTreeTests
     {
         var tree = XMasTree(height);
         var widestPart = tree[index];
-        Assert.IsTrue(widestPart.All(x => x =='#'));
+        Assert.IsTrue(widestPart.All(x => x is'#'));
     }
 
     [TestCase(3,1,"_###_")]
@@ -147,21 +160,11 @@ public class XMasTreeTests
     [TestCase(1,0)]
     [TestCase(2,2)]
     [TestCase(3,4)]
-    public void Treetop_is_padded_to_match_the_widest_part_of_the_tree(int height, int padding)
-    {
-        var tree = XMasTree(height);
-        var top = tree.First();
-        Assert.AreEqual(padding, top.Count(x => x == '_'));
-    }
-
-    [TestCase(1,0)]
-    [TestCase(2,2)]
-    [TestCase(3,4)]
     public void Lower_trunk_is_padded_to_match_the_widest_part_of_the_tree(int height, int padding)
     {
         var tree = XMasTree(height);
         var lowerTrunk = tree.Last();
-        Assert.AreEqual(padding, lowerTrunk.Count(x => x == '_'));
+        Assert.AreEqual(padding, lowerTrunk.Count(x => x is '_'));
     }
 
     [TestCase(2,2)]
@@ -170,6 +173,6 @@ public class XMasTreeTests
     {
         var tree = XMasTree(height);
         var upperTrunk = tree[tree.Count-2];
-        Assert.AreEqual(padding, upperTrunk.Count(x => x == '_'));
+        Assert.AreEqual(padding, upperTrunk.Count(x => x is '_'));
     }
 }
