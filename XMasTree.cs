@@ -21,25 +21,25 @@ public class XMas
 
     private static List<string> GrowLeaves(int height)
     {
-        var tree = new List<string>();
+        var leaves = new List<string>();
         int treeWidth = 1;
         int totalPaddingWidth = (height-1)*2;
         
         for (int i = 0; i < height; i++)
         {
-            tree.Add(PaddedTreePart(treeWidth, totalPaddingWidth));
+            leaves.Add(PaddedTreePart(treeWidth, totalPaddingWidth));
             treeWidth += 2;
             totalPaddingWidth -= 2;
         }
 
-        return tree;
-    }
-    private static List<string> GrowTrunk(List<string> leaves, int height)
-    {
-        leaves.Add(PaddedTrunk(height));
-        if (height > 1)
-            leaves.Add(PaddedTrunk(height));
         return leaves;
+    }
+    private static List<string> GrowTrunk(List<string> tree, int height)
+    {
+        tree.Add(PaddedTrunk(height));
+        if (height > 1)
+            tree.Add(PaddedTrunk(height));
+        return tree;
     }
 
     private static string PaddedTrunk(int height)
