@@ -1,29 +1,37 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 namespace xmastree;
 
 public class XMas 
 {
     public static List<string> XMasTree(int height)
     {
+        var xmas = new XMas(height);
+        return xmas.GrowTree();
+    }
+
+    private int height;
+
+    public XMas(int height)
+    {
         if (height < 0)
             throw new ArgumentOutOfRangeException();
 
+        this.height = height;
+    }
+
+    public List<string> GrowTree()
+    {
         if (height == 0)
             return new List<string>();
-
-        var leaves = GrowLeaves(height);
-        var tree = GrowTrunk(leaves, height);
-
+        var leaves = GrowLeaves();
+        var tree = GrowTrunk(leaves);
         return tree;
     }
 
-    private static List<string> GrowLeaves(int height)
+    private List<string> GrowLeaves()
     {
         var leaves = new List<string>();
         int treeWidth = 1;
-        int paddingWidth = height-1;
+        int paddingWidth = MaxPaddingWdith();
         
         for (int i = 0; i < height; i++)
         {
@@ -34,17 +42,20 @@ public class XMas
 
         return leaves;
     }
-    private static List<string> GrowTrunk(List<string> tree, int height)
+
+    private int MaxPaddingWdith() => height-1;
+
+    private List<string> GrowTrunk(List<string> tree)
     {
-        tree.Add(PaddedTrunk(height));
+        tree.Add(PaddedTrunk());
         if (height > 1)
-            tree.Add(PaddedTrunk(height));
+            tree.Add(PaddedTrunk());
         return tree;
     }
 
-    private static string PaddedTrunk(int height)
+    private string PaddedTrunk()
     {
-        return PaddedTreePart(1, height-1);
+        return PaddedTreePart(1, MaxPaddingWdith());
     }
 
     private static string PaddedTreePart(int treeWidth, int paddingWidth)
