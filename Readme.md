@@ -1,4 +1,5 @@
 # XMasTree
+![Ubuntu Build](https://github.com/toppiovi/XMasTree/actions/workflows/dotnet.yml/badge.svg)
 
 This Kata is taken from [CodeWars](https://www.codewars.com/kata/577c349edf78c178a1000108/go) and implemented in C#.
 
