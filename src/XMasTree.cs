@@ -23,13 +23,13 @@ public class XMas
     {
         var leaves = new List<string>();
         int treeWidth = 1;
-        int totalPaddingWidth = (height-1)*2;
+        int paddingWidth = height-1;
         
         for (int i = 0; i < height; i++)
         {
-            leaves.Add(PaddedTreePart(treeWidth, totalPaddingWidth));
+            leaves.Add(PaddedTreePart(treeWidth, paddingWidth));
             treeWidth += 2;
-            totalPaddingWidth -= 2;
+            paddingWidth--;
         }
 
         return leaves;
@@ -44,18 +44,18 @@ public class XMas
 
     private static string PaddedTrunk(int height)
     {
-        return PaddedTreePart(1, (height-1)*2);
+        return PaddedTreePart(1, height-1);
     }
 
-    private static string PaddedTreePart(int treeWidth, int totalPaddingWidth)
+    private static string PaddedTreePart(int treeWidth, int paddingWidth)
     {
         var treePart = InitStringWith('#', treeWidth);
-        return AddPadding(treePart, totalPaddingWidth);
+        return AddPadding(treePart, paddingWidth);
     }
 
-    private static string AddPadding(string treePart, int totalPaddingWidth)
+    private static string AddPadding(string treePart, int paddingWidth)
     {
-        var padding = InitStringWith('_', totalPaddingWidth/2);
+        var padding = InitStringWith('_', paddingWidth);
         return padding + treePart + padding;
     }
 
