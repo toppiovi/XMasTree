@@ -72,6 +72,16 @@ public List<string> GrowTree()
 
 Overall I made a very smooth experience solving this kata, but it was quite some work and more than 100 commits (baby steps!). 
 
+I did my best to stick to the following rules:
+- Red - Green - Refactor
+- No production code without test.
+- Test drives the design.
+- Test is written as a specification of the public API only. No implementation details.
+- [4 Rules of simple design](https://martinfowler.com/bliki/BeckDesignRules.html):
+  - Passes the tests
+  - Reveals intention
+  - No duplication
+  - Fewest elements
 ## Build and Test
 For building and testing this project, simply run the following command.
 ```
