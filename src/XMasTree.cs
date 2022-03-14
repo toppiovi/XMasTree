@@ -9,6 +9,8 @@ public class XMas
     }
 
     private int height;
+    private int treeWidth;
+    private int paddingWidth;
 
     public XMas(int height)
     {
@@ -30,20 +32,23 @@ public class XMas
     private List<string> GrowLeaves()
     {
         var leaves = new List<string>();
-        int treeWidth = 1;
-        int paddingWidth = MaxPaddingWdith();
+        treeWidth = 1;
+        paddingWidth = MaxPaddingWidth();
         
         for (int i = 0; i < height; i++)
-        {
-            leaves.Add(PaddedTreePart(treeWidth, paddingWidth));
-            treeWidth += 2;
-            paddingWidth--;
-        }
+            GrowNextRowOfLeaves(leaves);
 
         return leaves;
     }
 
-    private int MaxPaddingWdith() => height-1;
+    private int MaxPaddingWidth() => height-1;
+
+    private void GrowNextRowOfLeaves(List<string> leaves)
+    {
+        leaves.Add(PaddedTreeRow());
+        treeWidth += 2;
+        paddingWidth--;
+    }
 
     private List<string> GrowTrunk(List<string> tree)
     {
@@ -55,16 +60,18 @@ public class XMas
 
     private string PaddedTrunk()
     {
-        return PaddedTreePart(1, MaxPaddingWdith());
+        treeWidth = 1;
+        paddingWidth = MaxPaddingWidth();
+        return PaddedTreeRow();
     }
 
-    private static string PaddedTreePart(int treeWidth, int paddingWidth)
+    private string PaddedTreeRow()
     {
         var treePart = InitStringWith('#', treeWidth);
-        return AddPadding(treePart, paddingWidth);
+        return AddPadding(treePart);
     }
 
-    private static string AddPadding(string treePart, int paddingWidth)
+    private string AddPadding(string treePart)
     {
         var padding = InitStringWith('_', paddingWidth);
         return padding + treePart + padding;
