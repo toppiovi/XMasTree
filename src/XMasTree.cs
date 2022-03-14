@@ -50,16 +50,9 @@ public class XMas
     private static string PaddedTreePart(int treeWidth, int totalPaddingWidth)
     {
         var treePart = InitStringWith('#', treeWidth);
-        if (NoPaddingRequired(totalPaddingWidth))
-            return treePart;
-
         return AddPadding(treePart, totalPaddingWidth);
     }
 
-    private static bool NoPaddingRequired(int totalPaddingWidth)
-    {
-        return totalPaddingWidth == 0;
-    }
     private static string AddPadding(string treePart, int totalPaddingWidth)
     {
         var padding = InitStringWith('_', totalPaddingWidth/2);
