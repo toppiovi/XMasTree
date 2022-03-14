@@ -24,6 +24,7 @@ public class XMas
     {
         if (height == 0)
             return new List<string>();
+
         var leaves = GrowLeaves();
         var tree = GrowTrunk(leaves);
         return tree;
