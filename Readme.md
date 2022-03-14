@@ -1,3 +1,9 @@
+# XMasTree
+
+This Kata is taken from [CodeWars](https://www.codewars.com/kata/577c349edf78c178a1000108/go) and implemented in C#.
+
+## Kata Description
+
 Complete the function that returns a christmas tree of the given height. The height is passed through to the function and the function should return a list containing each line of the tree.
 
 XMasTree(5) should return : ['____#____', '___###___', '__#####__', '_#######_', '#########', '____#____', '____#____']
