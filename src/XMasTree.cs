@@ -15,7 +15,7 @@ public class XMas
     public XMas(int height)
     {
         if (height < 0)
-            throw new ArgumentOutOfRangeException();
+            throw new ArgumentOutOfRangeException("A tree can only grow towards the sky!");
 
         this.height = height;
     }
